@@ -1,0 +1,19 @@
+<project name = "jd" default = "deploy">
+
+  <target name = "compile">
+    <javac srcdir = "src" destdir = "classes"/>
+  </target>
+
+  <target name = "deploy" depends = "compile">
+    <delete file = "jd.war"/> 
+    <war destfile = "jd.war" needxmlfile="false" basedir = ".">
+      <classes dir = "classes/"/>
+      <lib dir = "lib/"/>
+    </war>
+    <copy file = "jd.war" todir = "/usr/share/tomcat6/webapps/"/>
+  </target>
+
+  <target name = "clean">
+    <delete dir = "/home/student/other/jd/classes/jd"/>
+  </target>
+</project>
